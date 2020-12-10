@@ -13,7 +13,7 @@ post '/login'=> 'session#create' #formsubmits to here, performs login, redirects
 delete '/login'=> 'session#destroy' #logout link goes here, redirect
 
 post '/houses/:id' => 'houses#apply'
-post '/dashboard' => 'dashboard#edit'
+post '/dashboard' => 'dashboard#edit', as: 'dashboard_path'
 
 #       THE BELLOW IS WHAT IS IN RESOURCES :USERS
 #       users GET    /users(.:format)          users#index
