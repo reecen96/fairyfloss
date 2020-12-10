@@ -18,12 +18,11 @@
 <h1> Image:</h1>
 <%= cl_image_tag @application.image %>
 
-<h1>House_id:</h1>
-<%= @application.house_num%> <br>
-<%# <%= House.find(@application.house_num ).title%> %>
+<h1>House applied for:</h1>
+<% @house= House.find(@application.house_num) %>
 
-<%= params[:id] %>
-<%= params[:building_nums] %>
+
+<%= link_to @house.title, house_path(@house) %>
 
 
 <p>

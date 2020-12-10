@@ -8,21 +8,22 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-  application =  Application.new application_params
+    application =  Application.new application_params
 
 #set user ID attribute
-  application.user_id = @current_user.id
+    application.user_id = @current_user.id
 
   #uploading image to database
-  if params[:application][:image].present?
-  response = Cloudinary::Uploader.upload params[:application][:image]
-  p response
-  application.image = response["public_id"]
-  end
+    if params[:application][:image].present?
+      response = Cloudinary::Uploader.upload params[:application][:image]
+      p response
+      application.image = response["public_id"]
+    end
 
-  application.save
-
-  redirect_to application_path(application.id) #go to path
+#save application
+    application.save
+#redirect after application create
+    redirect_to application_path(application.id) #go to path
 
   end
 
@@ -66,6 +67,6 @@ class ApplicationsController < ApplicationController
 
   private
   def application_params
-    params.require(:application).permit(:title, :offer, :message, :image)
+    params.require(:application).permit(:title, :offer, :message, :image, :house_num)
   end
 end
