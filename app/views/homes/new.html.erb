@@ -1,0 +1,30 @@
+<h2 class = heading>List a home</h2>
+
+<%= form_with model: @home, local: true do |f| %>
+
+<%= f.label :bed %>
+<%= f.text_field :bed %>
+<br>
+<%= f.label :bath %>
+<%= f.text_field :bath %>
+<br>
+<%= f.label :kitchen %>
+<%= f.text_field :kitchen %>
+<br>
+<%= f.label :parking %>
+<%= f.text_field :parking %>
+<br>
+<%= f.label :rent %>
+<%= f.text_field :rent %>
+<br>
+<%= f.label :leasem %>
+<%= f.text_field :leasem %>
+<br>
+<%= f.label :descrip %>
+<%= f.text_field :descrip %>
+<br>
+
+<%= f.submit %>
+
+
+<% end %>

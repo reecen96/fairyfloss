@@ -1,0 +1,119 @@
+<div class="bar">
+
+<h1 class = heading> My Dashboard </h1>
+</div>
+
+<h3> My Listings </h3>
+
+  <ul>
+    <% @houses.each do |p|  %>
+      <li>
+
+       <%= link_to p.title, house_path(p.id) %> <br>
+       Rent: $<%= p.rent%>  <br>
+       Bed: <%= p.bed %>  <br>
+       Bath: <%= p.bath %> <br>
+        Kitchen:<%= p.kitchen %> <br>
+       created: <%= p.created_at.to_date %>
+       <br>
+       <%= image_tag p.image_1, :size => "10%" %>
+       <%= image_tag p.image_2, :size => "10%" %>
+
+
+       <br>
+       <%  @application_id = Application.where("House_num = ?", p.id)-%>
+ <br>
+       <strong> Listing applications: </strong>
+       <% @application_id.each do |h| %> <br>
+       <%= form_with model: @application, local: true, html: { multipart: true} do |f| %>
+       <%= link_to h.title, application_path(h.id) %><br>
+       Application date: <%= p.created_at.to_date %> <br>
+
+
+       <%if h.status == true %>
+       <%= "Application has been accepted!" %><br>
+       <%else %>
+       <br>
+       <strong>Accept application: </strong>
+         <br>
+         <%= f.label :feedback %><br>
+         <%= f.text_field :feedback, :class => "text" %>
+         <%= f.hidden_field :id, :value => h.id %>
+         <%= f.hidden_field :status, :value => true %><br>
+        <%= f.submit "approve"%>
+       <% end %>
+       <% end %>
+       <%= form_with model: @application, local: true, html: { multipart: true} do |f| %>
+<br>
+
+
+       <%if h.status == true %>
+       <%= "Application has been accepted!" %><br>
+       <%else %>
+       <strong>decline application: </strong>
+         <br>
+         <%= f.label :feedback %><br>
+         <%= f.text_field :feedback, :class => "text" %>
+         <%= f.hidden_field :id, :value => h.id %>
+         <%= f.hidden_field :house_num, :value => "" %><br>
+        <%= f.submit "decline"%>
+       <% end %>
+       <% end %>
+
+       <br>
+
+       <%end%>
+
+
+      </li>
+    <% end %>
+  </ul>
+
+
+
+<br>
+<h3> My created applications </h3>
+
+  <% @applications.each do |p|  %>
+    <li>
+
+     <%= link_to p.title, application_path(p.id) %>
+     <br>
+     offer: $<%= p.offer%> <br>
+
+
+    <% if p.house_num.present? %>
+    <% @house= House.find(p.house_num)%>
+    House applied for:
+    <%= link_to @house.title, house_path(@house.id) %>
+    <br>
+    <%= image_tag @house.image_1, :size => "10%" %>
+
+
+   <% else %>
+   Application has been rejected
+   <br>
+   Feedback: <%= p.feedback %>
+    <% end %>
+
+      <br>
+    Applied the <%= p.created_at.to_date %> <br>
+
+<% if  p.house_num.present?%>
+     application status:
+     <%if p.status == true %>
+     <%= "Application has been accepted!" %><br>
+     <%= p.feedback %>
+     <%else %>
+     <%= "Pending" %>
+
+     <% end %>
+     <br>
+     <br>
+    </li>
+  <% end %>
+<br>
+<% end %>
+
+
+<h3> My account summary </h3>

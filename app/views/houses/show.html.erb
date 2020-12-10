@@ -1,0 +1,106 @@
+<div class="bar">
+<h2 class = heading> <%= @house.title %> <br></h2>
+</div>
+
+<h3>  Address: <%= @house.address %></h3>
+
+<div class= map>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRuj_SynB36yGfcgFp4Wa07GvjANNfP7w&callback=initMap&libraries=&v=weekly" defer></script>
+<style>
+  #map {
+    width: 50vw;
+    height: 50vw;
+  }
+</style>
+<script>
+function initMap() {
+const myLatLng = { lat: <%= @house.latitude %> , lng: <%= @house.longitude %>};
+const map = new google.maps.Map(document.getElementById("map"), {
+  zoom: 17,
+  center: myLatLng,
+});
+new google.maps.Marker({
+  position: myLatLng,
+  map,
+  title: "Hello World!",
+});
+}
+</script>
+</div>
+<h1>
+
+</h1>
+<div id="map"></div>
+
+
+
+
+
+</h2>
+ <%@house.longitude%>
+ <%@house.latitude%>
+  <% if @house.user_id == @current_user.id %>
+  <%= link_to 'delete house', house_path(@house.id), method: 'delete'  %>
+  <%= link_to 'Edit house', edit_house_path(@house.id) %>
+  <% end %>
+
+<div class = imagebox>
+<br>
+  <%= image_tag @house.image_1, :size => "20%" %>
+<br>
+  <%= image_tag @house.image_2, :size => "20%"  %>
+</div>
+
+
+<img id= "icon" src="https://i.ibb.co/9GrMVzq/clipart2461528.png" alt="Bath"> <%= @house.bath %>
+<img id= "icon" src="https://i.ibb.co/rFTcsnb/toppng-com-bed-filled-icon-bed-icon-white-1589x1272.png" alt="Bath"><%= @house.bed %>
+ <img id= "icon" src="https://i.ibb.co/rFTcsnb/toppng-com-bed-filled-icon-bed-icon-white-1589x1272.png" alt="Bath"><%= @house.kitchen %> <br>
+
+<br>
+Kitchen: <%= @house.kitchen %>
+
+<br>
+<% if @house.parking == true %>
+Property has parking
+<%else %>
+Property doesn't have parking
+<%end %>
+
+<h3> Rent:</h3>
+<%= number_to_currency(@house.rent) %> per week  <br><%= number_to_currency(@house.rent*52/12)%> per calendar month
+<h3> Lease length </h3>
+<%= @house.leasem %> months
+<h3> House description:</h3>
+<%= @house.descrip %>
+
+<h3> House suburb location:</h3>
+<a href="/suburbs/<%= @house.suburb.id %>"> <%= @house.suburb.name %></a>
+
+
+
+<h3> local transport </h3>
+  <%@transport_id = @house.transports %>
+
+   <% @transport_id.each do |h| %>
+   <%= link_to h.name, transport_show_path(h.id) %>
+   <%end%>
+
+<br>
+<h3> Apply: </h3>
+
+
+
+  <strong> Create a new application </strong>
+
+  <%= render partial: 'formapply' %>
+
+
+
+
+
+
+<br>
+<p>
+<strong>Created by:</strong>
+<%= @house.user.name %>
+</p>

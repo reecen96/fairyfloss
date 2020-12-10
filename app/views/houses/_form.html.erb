@@ -1,0 +1,47 @@
+<%= form_with model: @house, local: true do |f| %>
+
+<%= f.label :title %><br>
+<%= f.text_field :title %>
+<br>
+<%= f.label :bed %><br>
+<%= f.text_field :bed %>
+<br>
+<%= f.label :bath %><br>
+<%= f.text_field :bath %>
+<br>
+<%= f.label :kitchen %><br>
+<%= f.text_field :kitchen %>
+<br>
+<%= f.label :parking %><br>
+<%= f.text_field :parking %>
+<br>
+<%= f.label :rent %><br>
+<%= f.text_field :rent %>
+<br>
+<%= f.label :leasem %><br>
+<%= f.text_field :leasem %>
+<br>
+<%= f.label :descrip %><br>
+<%= f.text_field :descrip, :class => "text"%>
+<br>
+<%= f.label :address %><br>
+<%= f.text_field :address %>
+<br>
+<%= f.label :image %><br>
+<%= f.text_field :image %>
+<br>
+
+<%= f.label :suburb_id %><br>
+<%= f.collection_select :suburb_id, Suburb.all, :id, :name %>
+<br>
+<br>
+<strong>local transport</strong>
+<br>
+
+
+
+<br><br>
+<%= f.submit %>
+
+
+<% end %>

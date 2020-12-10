@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  avrent: 1.5
+  descrip: MyText
+  pop: 1
+  age: 1
+  pt: false
+  image: MyText
+
+two:
+  name: MyText
+  avrent: 1.5
+  descrip: MyText
+  pop: 1
+  age: 1
+  pt: false
+  image: MyText

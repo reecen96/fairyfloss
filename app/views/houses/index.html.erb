@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+
+  <%= stylesheet_link_tag   'application', media: 'all' %>
+<html>
+
+<div class="bar">
+<h1 class = heading>Available homes</h1>
+
+<div class="searchbar">
+<%= form_with(url: houses_search_path, local: true, method: "get") do |f| -%>
+<strong> beds: </strong>
+<select name= :bed id= :bed>
+  <option value="0">-</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4+">4</option>
+</select>
+<strong> baths: </strong>
+<select name= :bath id=:bath>
+  <option value="0">-</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4+">4</option>
+</select>
+<strong> kitchens: </strong>
+<select name=:kitchen id=:kitchen>
+  <option value="0">-</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4+">4</option>
+</select>
+<strong> Lease period (months): </strong>
+<select name=:leasem id=:leasem>
+  <option value="0">-</option>
+  <option value="3">3+</option>
+  <option value="6">6+</option>
+  <option value="12">12+</option>
+  <option value="24">24+</option>
+</select>
+<strong> Parking: </strong>
+<select name=:parking id=:parking>
+  <option value="yes">-</option>
+  <option value="yes">yes</option>
+  <option value="no">no</option>>
+</select>
+
+<%= f.submit "Apply", bed: :bed %>
+<%end %>
+</div>
+</div>
+
+
+
+<h1> Houses near me </h1>
+
+
+
+<div id="map">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPDiplZ6mVBCvhbyjA5MakVf_9XCOqYWY&callback=initMap&libraries=&v=weekly" defer></script>
+​
+<style>
+  #map {
+    width: 50vw;
+    height: 50vw;
+  }
+</style>
+​
+<script>
+​​
+const houses = <%== @houses.to_json %>;
+​
+​
+function initMap() {
+  // const myLatLng = { lat: -25.363, lng: 131.044 };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 10,
+    center: { lat: houses[houses.length-1].latitude, lng: houses[houses.length-1].longitude }
+  });
+​
+  for(let i = 0; i < houses.length; i++ ){
+    const houses = houses[i];
+    new google.maps.Marker({
+      position: { lat: house.latitude, lng: house.longitude },
+      map,
+      title: house.title,
+    });
+  } // for
+​
+​
+}
+</script>
+​
+</div>
+​
+
+
+
+
+
+
+<div class= row>
+
+<ul>
+<br>
+  <% @houses.each do |p|  %>
+  <div class= column>
+    <li>
+
+    <a id= link>
+     <%= link_to p.title, house_path(p.id) %>
+    </a>
+    <br>
+
+      <div id= images>
+     <%= image_tag p.image_1, :size => "320x200"%>
+     <%= image_tag p.image_2, :size => "320x200" %>
+     </div>
+
+     <p class= address>
+    <%= p.address %>
+    </p>
+
+     $<%= p.rent%> Per week
+     <img id= "icon" src="https://i.ibb.co/9GrMVzq/clipart2461528.png" alt="Bath"> <%= p.bath %>
+    <img id= "icon" src="https://i.ibb.co/rFTcsnb/toppng-com-bed-filled-icon-bed-icon-white-1589x1272.png" alt="Bath"><%= p.bed %>
+      <img id= "icon" src="https://i.ibb.co/rFTcsnb/toppng-com-bed-filled-icon-bed-icon-white-1589x1272.png" alt="Bath"><%= p.kitchen %> <br>
+     "<%= p.descrip %>"
+
+
+
+    </li>
+    <br> <br>
+    </div>
+  <% end %>
+  <ul>
+
+</div>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New1</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+
+
+
+    <header class="header">
+
+      <nav>
+      <h1>Fairy floss</h1>
+      <% if @current_user.present? %>
+      Welcome, <%= @current_user.name %>
+      <%= link_to 'Logout', login_path, method: 'delete' %>
+
+      <% else %>
+      <%= link_to 'Login', login_path %>
+      <%= link_to 'Sign Up', new_user_path %>
+
+      <% end %>
+
+      <br>
+      <ul id=buttons>
+
+        <li><form action=<%= new_house_path %>>
+    <input type="submit" class ="button" value="List a rental" /></form></li>
+        <li><form action=<%= houses_path %>>
+    <input type="submit" class ="button" value="view home listings" /></form></li>
+        <li><form action=<%= new_house_path %>>
+    <input type="submit" class ="button" value="List your home!" /></form></li>
+        <li><form action=<%= users_path	%>>
+    <input type="submit" class ="button" value="view flatmates" /></form></li>
+        <li><form action=<%= new_application_path %>>
+    <input type="submit" class ="button" value="Create application template" /></form></li>
+        <li><form action=<%= dashboard_path %>>
+    <input type="submit" class ="button" value="My dashboard" /></form></li>
+
+     </ul>
+
+      <ul id=buttonsLeft>
+      <li>
+      <input type="button" class="button" value="Back" onclick="history.back()">
+      </li>
+      </ul
+
+      </nav>
+
+    </header>
+
+
+
+    <%= yield %>
+    <!-- <footer>
+
+      <hr>
+
+    </footer> -->
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+    </style>
+  </body>
+</html>

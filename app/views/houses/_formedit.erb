@@ -1,0 +1,20 @@
+
+<%= form_with model: @application, local: true, html: { multipart: true} do |f| %>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+<%= f.label :message %>
+<%= f.text_field :message %>
+<br>
+<%= f.label :offer %>
+<%= f.text_field :offer %>
+<br>
+<%= f.label :image %>
+<%= f.file_field :image %>
+<br>
+
+
+<%= f.submit %>
+
+<% end %>

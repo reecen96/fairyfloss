@@ -1,0 +1,14 @@
+<div class="bar">
+
+<h1> Pick which application to apply with: </h1>
+</div>
+<%= form_with model: @house, local: true do |f| %>
+
+<%= f.collection_select :application_id, Application.all, :id, :title %>
+<br>
+
+
+
+
+
+<% end %>

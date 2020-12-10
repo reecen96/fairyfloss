@@ -1,0 +1,33 @@
+<div class="bar">
+
+<h2 class = heading>
+  Application: <%= @application.title %>
+</h2>
+</div>
+<% if @application.user_id == @current_user.id %>
+<%= link_to 'Delete application', application_path(@application.id), method: 'delete'  %>
+<%= link_to 'Edit application', edit_application_path(@application.id) %>
+<% end %>
+
+<h1> Title:</h1>
+<%= @application.title %>
+<h1> Message:</h1>
+<%= @application.message %>
+<h1> Offer:</h1>
+<%= @application.offer %>
+<h1> Image:</h1>
+<%= cl_image_tag @application.image %>
+
+<h1>House_id:</h1>
+<%= @application.house_num%> <br>
+<%# <%= House.find(@application.house_num ).title%> %>
+
+<%= params[:id] %>
+<%= params[:building_nums] %>
+
+
+<p>
+<strong>Created by:</strong>
+<%= @application.user.name %>
+<br>
+</p>

@@ -1,0 +1,16 @@
+<div class="bar">
+<h2 class = heading> Suburb profile </h2>
+</div>
+<h3>Suburb name: <%= @suburb.name %></h3>
+
+Average rent per week : $<%= @suburb.avrent %>
+<br><br>
+<strong> Demographics:</strong><br>
+Population: <%= @suburb.pop %><br>
+Age: <%= @suburb.age %>
+<br> <br>
+<strong> Suburb description: </strong> <%= @suburb.descrip %> <br> <br>
+<strong> Public transport? </strong> <%= @suburb.pt %>
+
+<br> <br>
+<%= image_tag @suburb.image %>

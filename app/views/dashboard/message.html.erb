@@ -1,0 +1,40 @@
+<h1 class = heading> Live chat </h1>
+<% conversation = @sender.mailbox.inbox.first %>
+
+
+
+<%receipts1 = conversation.receipts_for @sender %>
+<%receipts2 = conversation.receipts_for @receiver %>
+<%receipts3 = receipts1.merge(receipts2) %>
+
+<%receipts = receipts3.reject do |u| %>
+<%u.id =! @sender && @receiver%>
+<%end%>
+
+
+
+<%  receipts.each do |receipt| %>
+
+  <% message = receipt.message %>
+  <%= message.subject %>
+  <%= message.created_at %>
+  <br>
+  message sender name:
+<%= message.sender.name %>
+<% end %>
+
+<%# <%=@mailbox=@receiver.mailbox.inbox.order('created_at DESC')%> %>
+
+
+
+<%= form_with(url: dashboard_message_path, local: true, method: "get") do |f| -%>
+
+<br>
+Subject:
+<%= f.text_field :subject %> <br>
+Body:
+<%= f.text_field :body %>
+
+<%= f.submit "Apply", bed: :bed %>
+
+  <% end %>

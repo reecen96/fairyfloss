@@ -1,0 +1,18 @@
+<div class="bar">
+<h1 class = heading> User profile </h1>
+</div>
+<h2>
+<strong><%= @user.name %></strong>
+</h2>
+<br>
+
+
+<div class = imagebox>
+<%= image_tag @user.image, :size => "20%" %>
+</div>
+<h2> Name:</h2>
+<h3> <%= @user.name %> </h3>
+<h2> Bio:</h2>
+<h3><%= @user.bio %></h3>
+
+<br> <br>

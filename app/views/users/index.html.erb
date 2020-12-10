@@ -1,0 +1,51 @@
+<div class="bar">
+
+<h1 class = heading> Flatmates & Roommates </h1>
+
+<div class = searchbar>
+<%= form_with(url: users_search_path, local: true, method: "get") do |f| -%>
+<%= f.text_field :name %>
+
+<%= f.submit "Search users"%>
+<%end %>
+</div>
+</div>
+
+
+
+
+
+
+
+<div id= users>
+<div class= row>
+
+<ul>
+<br>
+
+  <% @users.each do |p|  %>
+  <div class= column>
+    <li>
+
+
+     <%= link_to p.name, user_path(p.id) %>
+
+     <br>
+    <%= p.bio %> <br>
+   <%= image_tag p.image, :size => "40%" %>
+
+
+
+
+    </li>
+    <br>
+    </div>
+  <% end %>
+
+  <ul>
+</div>
+
+
+  <br>
+
+</div>
