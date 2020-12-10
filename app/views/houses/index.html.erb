@@ -58,47 +58,7 @@
 <h1> Houses near me </h1>
 
 
-
-<div id="map">
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPDiplZ6mVBCvhbyjA5MakVf_9XCOqYWY&callback=initMap&libraries=&v=weekly" defer></script>
 ​
-<style>
-  #map {
-    width: 50vw;
-    height: 50vw;
-  }
-</style>
-​
-<script>
-​​
-const houses = <%== @houses.to_json %>;
-​
-​
-function initMap() {
-  // const myLatLng = { lat: -25.363, lng: 131.044 };
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 10,
-    center: { lat: houses[houses.length-1].latitude, lng: houses[houses.length-1].longitude }
-  });
-​
-  for(let i = 0; i < houses.length; i++ ){
-    const houses = houses[i];
-    new google.maps.Marker({
-      position: { lat: house.latitude, lng: house.longitude },
-      map,
-      title: house.title,
-    });
-  } // for
-​
-​
-}
-</script>
-​
-</div>
-​
-
-
-
 
 
 
