@@ -3,12 +3,14 @@
 <h1 class = heading> My Dashboard </h1>
 </div>
 
+
+<div class = dashboard>
 <h3> My Listings </h3>
 
   <ul>
     <% @houses.each do |p|  %>
       <li>
-
+      <div class = houselist>
        <%= link_to p.title, house_path(p.id) %> <br>
        Rent: $<%= p.rent%>  <br>
        Bed: <%= p.bed %>  <br>
@@ -44,6 +46,7 @@
        <% end %>
        <% end %>
        <%= form_with model: @application, local: true, html: { multipart: true} do |f| %>
+       <
 <br>
 
 
@@ -61,8 +64,8 @@
        <% end %>
 
        <br>
-
        <%end%>
+       </div>
 
 
       </li>
@@ -73,7 +76,7 @@
 
 <br>
 <h3> My created applications </h3>
-
+<div class = houselist>
   <% @applications.each do |p|  %>
     <li>
 
@@ -114,6 +117,7 @@
   <% end %>
 <br>
 <% end %>
+</div>
 
-
+</div>
 <h3> My account summary </h3>

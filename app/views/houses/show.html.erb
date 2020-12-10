@@ -32,10 +32,6 @@ new google.maps.Marker({
 </h1>
 <div id="map"></div>
 
-
-
-
-
 </h2>
  <%@house.longitude%>
  <%@house.latitude%>
@@ -44,6 +40,9 @@ new google.maps.Marker({
   <%= link_to 'Edit house', edit_house_path(@house.id) %>
   <% end %>
 
+
+
+
 <div class = imagebox>
 <br>
   <%= image_tag @house.image_1, :size => "20%" %>
@@ -51,7 +50,7 @@ new google.maps.Marker({
   <%= image_tag @house.image_2, :size => "20%"  %>
 </div>
 
-
+<div class = showhouse>
 <img id= "icon" src="https://i.ibb.co/9GrMVzq/clipart2461528.png" alt="Bath"> <%= @house.bath %>
 <img id= "icon" src="https://i.ibb.co/rFTcsnb/toppng-com-bed-filled-icon-bed-icon-white-1589x1272.png" alt="Bath"><%= @house.bed %>
  <img id= "icon" src="https://i.ibb.co/rFTcsnb/toppng-com-bed-filled-icon-bed-icon-white-1589x1272.png" alt="Bath"><%= @house.kitchen %> <br>
@@ -95,11 +94,11 @@ Property doesn't have parking
 
 
 
-
+</div>
 
 
 <br>
 <p>
 <strong>Created by:</strong>
-<%= @house.user_id %>
+<%= @house.user_id%>
 </p>

@@ -86,9 +86,9 @@ puts "the house #{h1.title} has the transport #{h1.transports.pluck(:name).join(
 print "creating applications..."
 Application.destroy_all
 
-a1 = Application.create! title: 'I need a house asap!', status: "false", message: 'please contact me back :)', offer: 350, image: "https://media.guestofaguest.com/t_article_content/gofg-media/2019/10/1/52898/71594080_172055350514452_525689001797301715_n_(2).jpg", house_num: 1
-a2 = Application.create! title: 'I love your house', status: "false", message: 'give me a buzz', offer: 600, image: "https://i.redd.it/xoabd8syg9f31.jpg", house_num: 2
-a3 = Application.create! title: 'Can I live with ya?', status: "false", message: 'lets live together :)', offer: 800, image: "https://i.redd.it/xoabd8syg9f31.jpg", house_num: 2
+a1 = Application.create! title: 'I need a house asap!', status: "false", message: 'please contact me back :)', offer: 350, image: "https://media.guestofaguest.com/t_article_content/gofg-media/2019/10/1/52898/71594080_172055350514452_525689001797301715_n_(2).jpg"
+a2 = Application.create! title: 'I love your house', status: "false", message: 'give me a buzz', offer: 600, image: "https://i.redd.it/xoabd8syg9f31.jpg"
+a3 = Application.create! title: 'Can I live with ya?', status: "false", message: 'lets live together :)', offer: 800, image: "https://i.redd.it/xoabd8syg9f31.jpg"
 
 
 
