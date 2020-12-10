@@ -9,9 +9,9 @@ class DashboardController < ApplicationController
 end
 
 def show
-  @houses = House.where("user_id == ?", session[:user_id])
+  @houses = House.where("user_id = ?", session[:user_id])
 
-  @applications = Application.where("user_id == ?", session[:user_id])
+  @applications = Application.where("user_id = ?", session[:user_id])
 
 end
 
