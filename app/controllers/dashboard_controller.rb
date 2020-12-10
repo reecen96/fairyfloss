@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+before_action :check_if_logged_in
 
   def new
     @user= User.new #make a blank user object to give to 'form_width'

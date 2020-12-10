@@ -117,9 +117,9 @@ puts "Application #{Application.first.title} belongs to #{Application.first.user
 
 #user owning houses
 u1.houses << h1 << h7
-u2.houses << h2
-u3.houses << h3
-u4.houses << h6
+u2.houses << h2 << h8
+u3.houses << h3 << h9
+u4.houses << h6 << h10
 u5.houses << h5
 u6.houses << h4
 puts "User #{User.first.name} has listed property #{User.first.houses.pluck(:title).join(',')}"
